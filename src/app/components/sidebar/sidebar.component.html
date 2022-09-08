@@ -1,0 +1,40 @@
+<mat-drawer-container class="example-container">
+    <mat-drawer class="menu" mode="side" opened>
+        <mat-selection-list #opciones multiple="false">
+            <mat-list-option *ngFor="let opcion of opcionesMenu" [value]="opcion">
+                {{opcion}}
+            </mat-list-option>
+        </mat-selection-list>
+    </mat-drawer>
+    <mat-drawer-content>
+        <div class="buttons" *ngIf="opciones.selectedOptions.selected[0]?.value == 'Clients'">
+            <button class="button" mat-raised-button color="primary"> <mat-icon>library_add</mat-icon> New</button>
+            <button class="button" mat-raised-button color="primary"> <mat-icon>import_export</mat-icon> Export</button>
+        </div>
+        <div class="cliente" *ngIf="opciones.selectedOptions.selected[0]?.value == 'Clients'">
+            <div>
+                <label for="formClient">Name </label>
+                <input id="name" type="text" [formControl]="formClient">
+            </div>
+            <div>
+                <label for="formClient">Phone </label>
+                <input id="phone" type="number" [formControl]="formClient">
+            </div>
+            <div>
+                <label for="formClient">Email </label>
+                <input id="name" type="email" [formControl]="formClient">
+            </div>
+            <div>
+                <label for="formClient">Star date </label>
+                <input id="starDate" type="date" [formControl]="formClient">                
+            </div>
+            <div>
+                <label for="formClient">End date </label>
+                <input id="endDate" type="date" [formControl]="formClient">            
+            </div>
+        </div>
+        <div *ngIf="opciones.selectedOptions.selected[0]?.value == 'Clients'">
+            <app-table></app-table>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>
